@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz - Start</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #timer {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="my-4">Quiz: <span th:text="${quiz.title}"></span></h1>
+
+    <!-- Timer -->
+    <div id="timer" class="text-info">05:00</div>
+
+    <form id="quiz-form" th:action="@{/quiz/{id}/submit(id=${quiz.id})}" method="post">
+        <div th:each="question, iterStat : ${quiz.questions}">
+            <div class="form-group">
+                <label th:text="${question.questionText}"></label>
+                <div>
+                    <label>
+                        <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'"
+                               th:value="true" /> True
+                    </label>
+                    <label>
+                        <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'"
+                               th:value="false" /> False
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-4">Submit Quiz</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS & Timer Script -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    let timeLeft = 300; // 5 minutes in seconds
+    const timer = document.getElementById('timer');
+
+    function updateTimer() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timer.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+        if (timeLeft > 0) {
+            timeLeft--;
+        } else {
+            clearInterval(timerInterval);
+            alert('Time is up! Your quiz has been submitted automatically.');
+            document.getElementById('quiz-form').submit();
+        }
+    }
+
+    const timerInterval = setInterval(updateTimer, 1000);
+</script>
+</body>
+</html>
