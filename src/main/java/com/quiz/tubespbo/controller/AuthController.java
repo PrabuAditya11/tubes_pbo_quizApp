@@ -18,16 +18,27 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+<<<<<<< HEAD
     @GetMapping("/login")
     public String loginPage() {
         return "auth/login";
     }
 
+=======
+    // Menampilkan halaman login
+    @GetMapping("/login")
+    public String loginPage() {
+        return "auth/login"; // Mengarah ke templates/auth/login.html
+    }
+
+    // Proses login
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
     @PostMapping("/login")
     public String login(String nim, String password, HttpSession session, Model model) {
         User user = userService.authenticate(nim, password);
         if (user != null) {
             session.setAttribute("currentUser", user);
+<<<<<<< HEAD
 
             // Redirect berdasarkan role
             if ("admin".equals(user.getRole())) {
@@ -35,12 +46,16 @@ public class AuthController {
             } else {
                 return "redirect:/user/dashboard"; // User dashboard
             }
+=======
+            return "redirect:/user/dashboard"; // Redirect ke dashboard user
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
         } else {
             model.addAttribute("error", "Invalid NIM or Password");
             return "auth/login"; // Kembali ke halaman login dengan pesan error
         }
     }
 
+<<<<<<< HEAD
 
 
     @GetMapping("/register")
@@ -73,3 +88,13 @@ public class AuthController {
 }
 
 
+=======
+    // Proses logout
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/auth/login"; // Redirect ke halaman login
+    }
+}
+
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633

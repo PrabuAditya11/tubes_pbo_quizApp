@@ -10,7 +10,11 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+<<<<<<< HEAD
 @Table(name = "user")
+=======
+@Table(name ="user")
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +26,11 @@ public class User {
 
     private String password;
 
+<<<<<<< HEAD
     private String role;
 
+=======
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<QuizResult> quizResults;
 }
