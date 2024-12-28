@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+<<<<<<< HEAD
 import java.util.List;
+=======
+>>>>>>> f71b585d6fc21b12e593362ac78565e4dd8b52e1
 
 @Service
 public class QuizResultService {
@@ -17,6 +20,10 @@ public class QuizResultService {
     private QuizResultRepository quizResultRepository;
 
     // Menyimpan hasil quiz ke dalam database
+<<<<<<< HEAD
+=======
+    // Menyimpan hasil quiz ke dalam database
+>>>>>>> f71b585d6fc21b12e593362ac78565e4dd8b52e1
     public QuizResult saveQuizResult(User user, Quiz quiz, int score, LocalDateTime startTime, LocalDateTime endTime, long timeTakenInSeconds) {
         QuizResult newResult = new QuizResult();
         newResult.setUser(user);
@@ -46,9 +53,14 @@ public class QuizResultService {
     public QuizResult getQuizResultByUserAndQuiz(Long userId, Long quizId) {
         return quizResultRepository.findByUserIdAndQuizId(userId, quizId);
     }
+<<<<<<< HEAD
 
     // Mendapatkan leaderboard berdasarkan Quiz ID
     public List<QuizResult> getLeaderboardByQuiz(Long quizId) {
         return quizResultRepository.findTopResultsByQuizId(quizId);
     }
 }
+=======
+}
+
+>>>>>>> f71b585d6fc21b12e593362ac78565e4dd8b52e1
