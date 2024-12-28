@@ -11,12 +11,21 @@
             font-size: 2em;
             font-weight: bold;
         }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
         .question-container {
             display: none;
         }
         .question-container.active {
             display: block;
         }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 9f247781e79bfa142dca17f44dc17ca11ed6064e
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
     </style>
 </head>
 <body>
@@ -24,10 +33,27 @@
     <h1 class="my-4">Quiz: <span th:text="${quiz.title}"></span></h1>
 
     <!-- Timer -->
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
     <div id="timer" class="text-info">00:00</div>
 
     <form id="quiz-form" th:action="@{/quiz/{id}/submit(id=${quiz.id})}" method="post">
         <div th:each="question, iterStat : ${quiz.questions}" class="question-container" th:classappend="${iterStat.index == 0} ? ' active' : ''">
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    <div id="timer" class="text-info">00:00</div>
+=======
+    <div id="timer" class="text-info">05:00</div>
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
+
+    <form id="quiz-form" th:action="@{/quiz/{id}/submit(id=${quiz.id})}" method="post">
+        <div th:each="question, iterStat : ${quiz.questions}">
+>>>>>>> 9f247781e79bfa142dca17f44dc17ca11ed6064e
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
             <div class="form-group">
                 <label th:text="${question.questionText}"></label>
                 <div>
@@ -41,12 +67,28 @@
                     </label>
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
             <div class="text-center">
                 <button type="button" class="btn btn-primary next-button">Next</button>
             </div>
         </div>
 
         <button type="submit" class="btn btn-success mt-4" id="submit-button" style="display:none;">Submit Quiz</button>
+<<<<<<< HEAD
+=======
+=======
+        </div>
+
+<<<<<<< HEAD
+        <button type="submit" class="btn btn-success mt-4" id="submit-button">Submit Quiz</button>
+=======
+        <button type="submit" class="btn btn-success mt-4">Submit Quiz</button>
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
+>>>>>>> 9f247781e79bfa142dca17f44dc17ca11ed6064e
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
     </form>
 </div>
 
@@ -57,10 +99,24 @@
 <script>
     let timeLeft = 300; // 5 minutes in seconds
     const timer = document.getElementById('timer');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
     const submitButton = document.getElementById('submit-button');
     const quizForm = document.getElementById('quiz-form');
     const questionContainers = document.querySelectorAll('.question-container');
     let currentQuestionIndex = 0;
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    const submitButton = document.getElementById('submit-button');
+    const quizForm = document.getElementById('quiz-form');
+=======
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
+>>>>>>> 9f247781e79bfa142dca17f44dc17ca11ed6064e
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
 
     function updateTimer() {
         const minutes = Math.floor(timeLeft / 60);
@@ -72,11 +128,29 @@
         } else {
             clearInterval(timerInterval);
             alert('Time is up! Your quiz has been submitted automatically.');
+<<<<<<< HEAD
             quizForm.submit();
+=======
+<<<<<<< HEAD
+            quizForm.submit();
+=======
+<<<<<<< HEAD
+
+            // Trigger submit
+            quizForm.submit();
+=======
+            document.getElementById('quiz-form').submit();
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
+>>>>>>> 9f247781e79bfa142dca17f44dc17ca11ed6064e
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
         }
     }
 
     const timerInterval = setInterval(updateTimer, 1000);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
 
     // Show the next question when clicking "Next"
     document.querySelectorAll('.next-button').forEach((button, index) => {
@@ -100,6 +174,20 @@
         event.preventDefault();
         quizForm.submit();
     });
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+
+    // Optional: you can also trigger the submit when the user clicks the submit button
+    submitButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default form submit to avoid conflict
+        quizForm.submit();
+    });
+=======
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
+>>>>>>> 9f247781e79bfa142dca17f44dc17ca11ed6064e
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
 </script>
 </body>
 </html>
