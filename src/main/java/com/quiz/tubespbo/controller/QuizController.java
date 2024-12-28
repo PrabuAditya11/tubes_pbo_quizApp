@@ -15,7 +15,14 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+<<<<<<< HEAD
 import java.util.Collections;
+=======
+<<<<<<< HEAD
+import java.util.Collections;
+=======
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
+>>>>>>> 73509598a7aef48b7d6a53f3dea5dc27928b7dd6
 
 @Controller
 @RequestMapping("/quiz")
@@ -35,7 +42,14 @@ public class QuizController {
     public String attemptQuiz(@PathVariable("id") Long quizId, HttpSession session, Model model) {
         LocalDateTime startTime = LocalDateTime.now();
         session.setAttribute("quizStartTime", startTime);
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
+>>>>>>> 73509598a7aef48b7d6a53f3dea5dc27928b7dd6
         if (quizId == null) {
             throw new IllegalArgumentException("Quiz ID cannot be null");
         }
@@ -45,6 +59,10 @@ public class QuizController {
             return "redirect:/auth/login";
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 73509598a7aef48b7d6a53f3dea5dc27928b7dd6
         // Fetch the quiz by ID
         Quiz quiz = quizService.getQuizById(quizId);
 
@@ -54,6 +72,14 @@ public class QuizController {
         model.addAttribute("quiz", quiz);
         model.addAttribute("quizId", quizId);
 
+<<<<<<< HEAD
+=======
+=======
+        Quiz quiz = quizService.getQuizById(quizId);
+        model.addAttribute("quiz", quiz);
+        model.addAttribute("quizId", quizId);
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
+>>>>>>> 73509598a7aef48b7d6a53f3dea5dc27928b7dd6
         return "quiz/quiz";
     }
 
@@ -83,8 +109,31 @@ public class QuizController {
             }
         }
 
+<<<<<<< HEAD
         // Skor * 2 karena soalnya 5
         score *= 2;
+=======
+<<<<<<< HEAD
+        // Skor * 2 karena soalnya 5
+        score *= 2;
+=======
+<<<<<<< HEAD
+        // Skor * 2 karena soalnya 5
+        score *= 2;
+=======
+<<<<<<< HEAD
+        // Skor * 2 karena soalnya 5
+        score *= 2;
+=======
+        // Skor maksimum 100
+        score *= 2;
+        if (score > 100) {
+            score = 100;
+        }
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
+>>>>>>> 9f247781e79bfa142dca17f44dc17ca11ed6064e
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
+>>>>>>> 73509598a7aef48b7d6a53f3dea5dc27928b7dd6
 
         // Mendapatkan waktu mulai dan menghitung waktu yang dibutuhkan
         LocalDateTime startTime = (LocalDateTime) session.getAttribute("quizStartTime");
@@ -92,6 +141,10 @@ public class QuizController {
             timeTakenInSeconds = java.time.Duration.between(startTime, LocalDateTime.now()).getSeconds();
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 73509598a7aef48b7d6a53f3dea5dc27928b7dd6
         // Bonus score dari timeTaken
         if (timeTakenInSeconds <= 10) {
             score += 90;
@@ -101,11 +154,39 @@ public class QuizController {
             score += 10;
         }
 
+<<<<<<< HEAD
         // Cek apakah hasil quiz sudah ada berdasarkan userId dan quizId
         QuizResult existingResult = quizResultService.getQuizResultByUserAndQuiz(quizId, currentUser.getId());
 
         if (existingResult != null && existingResult.getUser().getId().equals(currentUser.getId())) {
             // Jika hasil sudah ada dan sesuai userId, lakukan update
+=======
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9f247781e79bfa142dca17f44dc17ca11ed6064e
+        //bonus score dari timeTaken
+        if(timeTakenInSeconds<=10){
+            score += 90;
+        } else if(timeTakenInSeconds<=30){
+            score += 50;
+        } else if(timeTakenInSeconds<=50){
+            score += 10;
+        }
+
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
+>>>>>>> 9f247781e79bfa142dca17f44dc17ca11ed6064e
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
+        // Cek apakah hasil quiz sudah ada berdasarkan userId dan quizId
+        QuizResult existingResult = quizResultService.getQuizResultByUserAndQuiz(quizId, currentUser.getId());
+
+        if (existingResult != null) {
+            // Jika hasil sudah ada, lakukan update
+>>>>>>> 73509598a7aef48b7d6a53f3dea5dc27928b7dd6
             quizResultService.updateQuizResult(existingResult, score, startTime, LocalDateTime.now(), timeTakenInSeconds);
         } else {
             // Jika tidak ada hasil sebelumnya, simpan sebagai hasil baru
@@ -117,5 +198,15 @@ public class QuizController {
 
         return "quiz/result";
     }
+<<<<<<< HEAD
 
 }
+=======
+<<<<<<< HEAD
+}
+=======
+
+
+}
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
+>>>>>>> 73509598a7aef48b7d6a53f3dea5dc27928b7dd6
