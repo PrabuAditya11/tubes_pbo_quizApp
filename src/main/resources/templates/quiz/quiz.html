@@ -18,7 +18,11 @@
     <h1 class="my-4">Quiz: <span th:text="${quiz.title}"></span></h1>
 
     <!-- Timer -->
+<<<<<<< HEAD
     <div id="timer" class="text-info">00:00</div>
+=======
+    <div id="timer" class="text-info">05:00</div>
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
 
     <form id="quiz-form" th:action="@{/quiz/{id}/submit(id=${quiz.id})}" method="post">
         <div th:each="question, iterStat : ${quiz.questions}">
@@ -37,7 +41,11 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <button type="submit" class="btn btn-success mt-4" id="submit-button">Submit Quiz</button>
+=======
+        <button type="submit" class="btn btn-success mt-4">Submit Quiz</button>
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
     </form>
 </div>
 
@@ -48,8 +56,11 @@
 <script>
     let timeLeft = 300; // 5 minutes in seconds
     const timer = document.getElementById('timer');
+<<<<<<< HEAD
     const submitButton = document.getElementById('submit-button');
     const quizForm = document.getElementById('quiz-form');
+=======
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
 
     function updateTimer() {
         const minutes = Math.floor(timeLeft / 60);
@@ -61,19 +72,26 @@
         } else {
             clearInterval(timerInterval);
             alert('Time is up! Your quiz has been submitted automatically.');
+<<<<<<< HEAD
 
             // Trigger submit
             quizForm.submit();
+=======
+            document.getElementById('quiz-form').submit();
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
         }
     }
 
     const timerInterval = setInterval(updateTimer, 1000);
+<<<<<<< HEAD
 
     // Optional: you can also trigger the submit when the user clicks the submit button
     submitButton.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent default form submit to avoid conflict
         quizForm.submit();
     });
+=======
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
 </script>
 </body>
 </html>

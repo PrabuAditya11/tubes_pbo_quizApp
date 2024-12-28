@@ -75,8 +75,16 @@ public class QuizController {
             }
         }
 
+<<<<<<< HEAD
         // Skor * 2 karena soalnya 5
         score *= 2;
+=======
+        // Skor maksimum 100
+        score *= 2;
+        if (score > 100) {
+            score = 100;
+        }
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
 
         // Mendapatkan waktu mulai dan menghitung waktu yang dibutuhkan
         LocalDateTime startTime = (LocalDateTime) session.getAttribute("quizStartTime");
@@ -84,6 +92,7 @@ public class QuizController {
             timeTakenInSeconds = java.time.Duration.between(startTime, LocalDateTime.now()).getSeconds();
         }
 
+<<<<<<< HEAD
         //bonus score dari timeTaken
         if(timeTakenInSeconds<=10){
             score += 90;
@@ -93,6 +102,8 @@ public class QuizController {
             score += 10;
         }
 
+=======
+>>>>>>> fa9f676b6cc3ccb5aa73ed0439f243242d145295
         // Cek apakah hasil quiz sudah ada berdasarkan userId dan quizId
         QuizResult existingResult = quizResultService.getQuizResultByUserAndQuiz(quizId, currentUser.getId());
 
