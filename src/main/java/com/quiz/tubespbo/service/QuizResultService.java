@@ -1,9 +1,14 @@
 package com.quiz.tubespbo.service;
 
+import com.quiz.tubespbo.model.Quiz;
 import com.quiz.tubespbo.model.QuizResult;
+import com.quiz.tubespbo.model.User;
 import com.quiz.tubespbo.repo.QuizResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class QuizResultService {
@@ -12,8 +17,24 @@ public class QuizResultService {
     private QuizResultRepository quizResultRepository;
 
     // Menyimpan hasil quiz ke dalam database
-    public QuizResult saveQuizResult(QuizResult quizResult) {
-        return quizResultRepository.save(quizResult);
+    public QuizResult saveQuizResult(User user, Quiz quiz, int score, LocalDateTime startTime, LocalDateTime endTime, long timeTakenInSeconds) {
+        QuizResult newResult = new QuizResult();
+        newResult.setUser(user);
+        newResult.setQuiz(quiz);
+        newResult.setScore(score);
+        newResult.setStartTime(startTime);
+        newResult.setEndTime(endTime);
+        newResult.setTimeTakenInSeconds(timeTakenInSeconds);
+        return quizResultRepository.save(newResult);
+    }
+
+    // Memperbarui hasil quiz yang sudah ada
+    public void updateQuizResult(QuizResult existingResult, int score, LocalDateTime startTime, LocalDateTime endTime, long timeTakenInSeconds) {
+        existingResult.setScore(score);
+        existingResult.setStartTime(startTime);
+        existingResult.setEndTime(endTime);
+        existingResult.setTimeTakenInSeconds(timeTakenInSeconds);
+        quizResultRepository.save(existingResult); // Update dengan menyimpan objek yang sudah diubah
     }
 
     // Mendapatkan hasil quiz berdasarkan ID
@@ -25,5 +46,9 @@ public class QuizResultService {
     public QuizResult getQuizResultByUserAndQuiz(Long userId, Long quizId) {
         return quizResultRepository.findByUserIdAndQuizId(userId, quizId);
     }
-}
 
+    // Mendapatkan leaderboard berdasarkan Quiz ID
+    public List<QuizResult> getLeaderboardByQuiz(Long quizId) {
+        return quizResultRepository.findTopResultsByQuizId(quizId);
+    }
+}

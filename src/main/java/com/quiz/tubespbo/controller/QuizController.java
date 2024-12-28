@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.Collections;
 
 @Controller
 @RequestMapping("/quiz")
@@ -32,6 +33,9 @@ public class QuizController {
     // Menampilkan halaman quiz untuk user
     @GetMapping("/{id}/attempt")
     public String attemptQuiz(@PathVariable("id") Long quizId, HttpSession session, Model model) {
+        LocalDateTime startTime = LocalDateTime.now();
+        session.setAttribute("quizStartTime", startTime);
+
         if (quizId == null) {
             throw new IllegalArgumentException("Quiz ID cannot be null");
         }
@@ -41,9 +45,15 @@ public class QuizController {
             return "redirect:/auth/login";
         }
 
+        // Fetch the quiz by ID
         Quiz quiz = quizService.getQuizById(quizId);
+
+        // Shuffle the questions to randomize their order
+        Collections.shuffle(quiz.getQuestions());
+
         model.addAttribute("quiz", quiz);
         model.addAttribute("quizId", quizId);
+
         return "quiz/quiz";
     }
 
@@ -53,11 +63,13 @@ public class QuizController {
                              @RequestParam Map<String, String> answers, // Menggunakan Map untuk menangkap jawaban
                              HttpSession session,
                              Model model) {
+        // Mendapatkan data user dari session
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
             return "redirect:/auth/login";
         }
 
+        // Mendapatkan quiz berdasarkan ID
         Quiz quiz = quizService.getQuizById(quizId);
         int score = 0;
         long timeTakenInSeconds = 0;
@@ -71,32 +83,57 @@ public class QuizController {
             }
         }
 
+        // Skor * 2 karena soalnya 5
         score *= 2;
 
-        if (score > 100) {
-            score = 100;
-        }
-
-        QuizResult quizResult = new QuizResult();
-        quizResult.setUser(currentUser);
-        quizResult.setQuiz(quiz);
-        quizResult.setScore(score);
-
-        // Simpan waktu yang dibutuhkan
+        // Mendapatkan waktu mulai dan menghitung waktu yang dibutuhkan
         LocalDateTime startTime = (LocalDateTime) session.getAttribute("quizStartTime");
         if (startTime != null) {
-            quizResult.setStartTime(startTime);
-            quizResult.setEndTime(LocalDateTime.now());
             timeTakenInSeconds = java.time.Duration.between(startTime, LocalDateTime.now()).getSeconds();
         }
 
-        quizResult.setTimeTakenInSeconds(timeTakenInSeconds);
-        quizResultService.saveQuizResult(quizResult);
+        // Bonus score dari timeTaken
+        if (timeTakenInSeconds <= 10) {
+            score += 90;
+        } else if (timeTakenInSeconds <= 30) {
+            score += 50;
+        } else if (timeTakenInSeconds <= 50) {
+            score += 10;
+        }
+
+        // Cek apakah hasil quiz sudah ada berdasarkan userId dan quizId
+        QuizResult existingResult = quizResultService.getQuizResultByUserAndQuiz(quizId, currentUser.getId());
+
+        if (existingResult != null && existingResult.getUser().getId().equals(currentUser.getId())) {
+            // Jika hasil sudah ada dan sesuai userId, lakukan update
+            quizResultService.updateQuizResult(existingResult, score, startTime, LocalDateTime.now(), timeTakenInSeconds);
+        } else {
+            // Jika tidak ada hasil sebelumnya, simpan sebagai hasil baru
+            quizResultService.saveQuizResult(currentUser, quiz, score, startTime, LocalDateTime.now(), timeTakenInSeconds);
+        }
 
         model.addAttribute("score", score);
         model.addAttribute("timeTakenInSeconds", timeTakenInSeconds);
 
         return "quiz/result";
+    }
+
+    // Menampilkan leaderboard untuk quiz tertentu
+    @GetMapping("/{id}/leaderboard")
+    public String getLeaderboard(@PathVariable("id") Long quizId, Model model) {
+        // Validasi apakah quiz ada
+        Quiz quiz = quizService.getQuizById(quizId);
+        if (quiz == null) {
+            throw new IllegalArgumentException("Quiz not found for id: " + quizId);
+        }
+
+        // Ambil hasil leaderboard berdasarkan quiz ID
+        List<QuizResult> leaderboard = quizResultService.getLeaderboardByQuiz(quizId);
+
+        model.addAttribute("quiz", quiz);
+        model.addAttribute("leaderboard", leaderboard);
+
+        return "quiz/leaderboard"; // Menampilkan halaman leaderboard
     }
 
 }
