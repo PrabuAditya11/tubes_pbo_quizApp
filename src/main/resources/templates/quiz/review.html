@@ -5,6 +5,22 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
 <div class="container my-4">
   <h1>Review for Quiz: <span th:text="${quiz.title}">Quiz Title</span></h1>
 
@@ -39,5 +55,55 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+<div class="container mt-5">
+  <h1 class="my-4">Quiz Review: <span th:text="${quiz.title}"></span></h1>
+
+  <div class="row">
+    <div class="col">
+      <h4>Your Score: <span th:text="${quizResult.score}"></span></h4>
+      <h5>Time Taken: <span th:text="${quizResult.timeTakenInSeconds}"></span> seconds</h5>
+    </div>
+  </div>
+
+  <div th:each="question, iterStat : ${quiz.questions}">
+    <div class="card my-3">
+      <div class="card-body">
+        <h5 class="card-title" th:text="${question.questionText}"></h5>
+
+        <!-- User's Answer -->
+        <p><strong>Your Answer: </strong>
+          <span th:if="${userAnswers[iterStat.index]}" th:text="'True'"></span>
+          <span th:if="${!userAnswers[iterStat.index]}" th:text="'False'"></span>
+        </p>
+
+        <!-- Correct Answer -->
+        <p><strong>Correct Answer: </strong>
+          <span th:if="${question.correctAnswer}" th:text="'True'"></span>
+          <span th:if="${!question.correctAnswer}" th:text="'False'"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <a href="/quiz/{quiz.id}/attempt" class="btn btn-primary">Go Back to Quiz</a>
+</div>
+
+>>>>>>> 9fca2ca58408eff5e64e42a1a32eeaff21d2114e
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
 </body>
 </html>

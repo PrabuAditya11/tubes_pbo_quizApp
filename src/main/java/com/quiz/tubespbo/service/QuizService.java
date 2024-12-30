@@ -1,8 +1,18 @@
 package com.quiz.tubespbo.service;
 
+<<<<<<< HEAD
 import com.quiz.tubespbo.model.Question;
 import com.quiz.tubespbo.model.Quiz;
 import com.quiz.tubespbo.repo.QuestionRepository;
+=======
+<<<<<<< HEAD
+import com.quiz.tubespbo.model.Question;
+import com.quiz.tubespbo.model.Quiz;
+import com.quiz.tubespbo.repo.QuestionRepository;
+=======
+import com.quiz.tubespbo.model.Quiz;
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
 import com.quiz.tubespbo.repo.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +25,10 @@ public class QuizService {
     @Autowired
     private QuizRepository quizRepository;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
     @Autowired
     private QuestionRepository questionRepository;
 
@@ -41,9 +55,50 @@ public class QuizService {
     public void deleteQuestion(Long questionId) {
         questionRepository.deleteById(questionId);
     }
+<<<<<<< HEAD
 
     // Metode untuk menghapus quiz berdasarkan ID
     public void deleteQuizById(Long quizId) {
         quizRepository.deleteById(quizId);
     }
 }
+=======
+}
+=======
+<<<<<<< HEAD
+    public List<Quiz> getAvailableQuizzes() {
+        return quizRepository.findAll(); // Ambil semua quiz
+    }
+
+    public Quiz getQuizById(Long quizId) {
+        return quizRepository.findById(quizId).orElse(null); // Cari quiz berdasarkan ID
+    }
+
+    public Quiz saveQuiz(Quiz quiz) {
+        return quizRepository.save(quiz); // Simpan quiz beserta relasi soal
+    }
+}
+
+
+=======
+    // Method to get all available quizzes
+    public List<Quiz> getAvailableQuizzes() {
+        return quizRepository.findAll();  // Mengambil semua quiz yang tersedia di database
+    }
+
+    // Method to get a specific quiz by its ID
+    public Quiz getQuizById(Long quizId) {
+        return quizRepository.findById(quizId).orElse(null);  // Mencari quiz berdasarkan ID
+    }
+
+    // Method to save a quiz
+    public Quiz saveQuiz(Quiz quiz) {
+        return quizRepository.save(quiz);  // Menyimpan quiz ke database
+    }
+
+    // Additional methods for handling quiz operations can be added here
+}
+
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
