@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Manage Quizzes</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <h1 class="my-4">Manage Quizzes</h1>
+  <a href="/quiz/new" class="btn btn-success mb-3">Create New Quiz</a>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="quiz : ${quizzes}">
+      <td th:text="${quiz.id}"></td>
+      <td th:text="${quiz.title}"></td>
+      <td>
+        <a th:href="@{/quiz/{id}/add-question(id=${quiz.id})}" class="btn btn-primary">Add Questions</a>
+        <a th:href="@{/quiz/{id}/edit(id=${quiz.id})}" class="btn btn-warning">Edit Quiz</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
