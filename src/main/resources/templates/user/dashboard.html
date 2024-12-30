@@ -7,12 +7,78 @@
 </head>
 <body>
 <div class="container">
+<<<<<<< HEAD
     <h1 class="my-4">Dashboardss</h1>
+=======
+<<<<<<< HEAD
+    <h1 class="my-4">Dashboardss</h1>
+=======
+<<<<<<< HEAD
+    <h1 class="my-4">Dashboardss</h1>
+=======
+<<<<<<< HEAD
+    <h1 class="my-4">Dashboardss</h1>
+=======
+<<<<<<< HEAD
+    <h1 class="my-4">Dashboardss</h1>
+=======
+<<<<<<< HEAD
+    <h1 class="my-4">Dashboardss</h1>
+=======
+<<<<<<< HEAD
+    <h1 class="my-4">Dashboard</h1>
+=======
+<<<<<<< HEAD
+    <h1 class="my-4">Dashboard</h1>
+=======
+<<<<<<< HEAD
+    <h1 class="my-4">Dashboard</h1>
+=======
+<<<<<<< HEAD
+    <h1 class="my-4">Dashboarddddz</h1>
+=======
+<<<<<<< HEAD
+    <h1 class="my-4">Dashboardddd</h1>
+=======
+    <h1 class="my-4">Dashboard</h1>
+>>>>>>> 9f247781e79bfa142dca17f44dc17ca11ed6064e
+>>>>>>> 446fcb8115662c5ed03b22b5cead0fa19560d49a
+>>>>>>> 73509598a7aef48b7d6a53f3dea5dc27928b7dd6
+>>>>>>> f71b585d6fc21b12e593362ac78565e4dd8b52e1
+>>>>>>> 9fca2ca58408eff5e64e42a1a32eeaff21d2114e
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
+>>>>>>> 8488b0d30f762d7f7c571fcaedd2ebb0f653d627
     <p>Welcome, <span id="user-name" class="font-weight-bold" th:text="${user.name}">User Name</span>!</p>
     <p>Your NIM: <span id="user-nim" th:text="${user.nim}">User NIM</span></p>
 
     <h2 class="my-4">Available Quizzes</h2>
     <ul id="quiz-list" class="list-group">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9fca2ca58408eff5e64e42a1a32eeaff21d2114e
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
+>>>>>>> 8488b0d30f762d7f7c571fcaedd2ebb0f653d627
         <li th:each="quiz : ${quizzes}" class="list-group-item d-flex justify-content-between align-items-center">
             <a href="#" class="btn btn-link" th:data-id="${quiz.id}" th:data-title="${quiz.title}" onclick="confirmStartQuiz(event)">
                 <span th:text="${quiz.title}">Quiz Title</span>
@@ -20,6 +86,34 @@
             <a th:href="'/quiz/' + ${quiz.id} + '/leaderboard'" class="btn btn-info btn-sm ml-2">Leaderboard</a>
         </li>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+        <li th:each="quiz : ${quizzes}">
+            <a href="#" class="btn btn-link" th:data-id="${quiz.id}" th:data-title="${quiz.title}" onclick="confirmStartQuiz(event)">
+                <span th:text="${quiz.title}">Quiz Title</span>
+            </a>
+        </li>
+>>>>>>> f71b585d6fc21b12e593362ac78565e4dd8b52e1
+>>>>>>> 9fca2ca58408eff5e64e42a1a32eeaff21d2114e
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
+>>>>>>> 8488b0d30f762d7f7c571fcaedd2ebb0f653d627
     </ul>
 
     <form id="logout-form" action="/user/logout" method="get">

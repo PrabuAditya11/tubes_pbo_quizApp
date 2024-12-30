@@ -6,5 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
+<<<<<<< HEAD
 
+=======
+    // JpaRepository secara otomatis menyediakan metode seperti findById, findAll, save, deleteById, dll.
+>>>>>>> 8488b0d30f762d7f7c571fcaedd2ebb0f653d627
 }
