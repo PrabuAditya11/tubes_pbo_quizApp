@@ -23,6 +23,10 @@ public class UserService {
         }
         return null;
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
 
     public boolean existsByNim(String nim) {
         return userRepository.findByNim(nim) != null;
@@ -33,3 +37,9 @@ public class UserService {
     }
 }
 
+<<<<<<< HEAD
+=======
+=======
+}
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
