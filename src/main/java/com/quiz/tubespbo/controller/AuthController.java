@@ -18,16 +18,54 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
     @GetMapping("/login")
     public String loginPage() {
         return "auth/login";
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+    // Menampilkan halaman login
+    @GetMapping("/login")
+    public String loginPage() {
+        return "auth/login"; // Mengarah ke templates/auth/login.html
+    }
+
+    // Proses login
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
     @PostMapping("/login")
     public String login(String nim, String password, HttpSession session, Model model) {
         User user = userService.authenticate(nim, password);
         if (user != null) {
             session.setAttribute("currentUser", user);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
 
             // Redirect berdasarkan role
             if ("admin".equals(user.getRole())) {
@@ -35,12 +73,34 @@ public class AuthController {
             } else {
                 return "redirect:/user/dashboard"; // User dashboard
             }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+            return "redirect:/user/dashboard"; // Redirect ke dashboard user
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
         } else {
             model.addAttribute("error", "Invalid NIM or Password");
             return "auth/login"; // Kembali ke halaman login dengan pesan error
         }
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
 
 
     @GetMapping("/register")
@@ -73,3 +133,22 @@ public class AuthController {
 }
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+    // Proses logout
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/auth/login"; // Redirect ke halaman login
+    }
+}
+
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26

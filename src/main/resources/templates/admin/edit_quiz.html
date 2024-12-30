@@ -7,6 +7,7 @@
 <body>
 <div class="container">
     <h1 class="my-4">Edit Quiz</h1>
+<<<<<<< HEAD
 
     <!-- Form untuk update title -->
     <form th:action="@{/quiz/{quizId}/update-title(quizId=${quiz.id})}" method="post">
@@ -46,6 +47,45 @@
     <a href="/quiz/manage" class="btn btn-secondary mt-3">Back to Manage Quizzes</a>
 
 
+=======
+    <form th:action="@{/quiz/{quizId}/update(quizId=${quiz.id})}" th:object="${quiz}" method="post">
+        <div class="form-group">
+            <label for="title">Quiz Title</label>
+            <input type="text" id="title" name="title" class="form-control" th:field="*{title}" required>
+        </div>
+        <h2 class="my-4">Questions</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Question Text</th>
+                <th>Correct Answer</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="question : ${questions}">
+                <td th:text="${question.id}"></td>
+                <td>
+                    <input type="text" name="questionText[${question.id}]" class="form-control" th:value="${question.questionText}" required>
+                </td>
+                <td>
+                    <select name="correctAnswer[${question.id}]" class="form-control">
+                        <option value="true" th:selected="${question.correctAnswer}">True</option>
+                        <option value="false" th:selected="${!question.correctAnswer}">False</option>
+                    </select>
+                </td>
+                <td>
+                    <form th:action="@{/quiz/{quizId}/question/{questionId}/delete(quizId=${quiz.id}, questionId=${question.id})}" method="post">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    </form>
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
 </div>
 </body>
 </html>

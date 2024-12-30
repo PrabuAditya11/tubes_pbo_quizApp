@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+<<<<<<< HEAD
 import lombok.ToString;
 
 import java.util.List;
@@ -14,17 +15,46 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Quiz {
+=======
+
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "quiz")
+public class Quiz {
+
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+<<<<<<< HEAD
     @Column(name = "title")
+=======
+<<<<<<< HEAD
+    @Column(name = "title") // Sesuaikan dengan nama kolom di database
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
     private String title;
 
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Question> questions;
+<<<<<<< HEAD
 
     // Getter dan Setter
 }
 
 
+=======
+}
+=======
+    private String title;  // Judul quiz (misalnya: Math Quiz, History Quiz)
+
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+    private List<Question> questions;  // Soal-soal yang ada dalam quiz
+}
+
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
