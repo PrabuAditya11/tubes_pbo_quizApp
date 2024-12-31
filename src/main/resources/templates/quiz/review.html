@@ -3,6 +3,19 @@
 <head>
   <title>Quiz Review</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 660102dfa1088bfa0bca7b774bd8e0b488a95ef2
+>>>>>>> ee0a2a13126d4e9c64349bfa09f2368b72c6b99f
+>>>>>>> 5a9eab0d1bd4fdbdf828c371c13bc1e15d30db60
+>>>>>>> d7e6079ccc39adb7891cf74591bce1feb827c2c4
   <style>
     body {
       background-color: #f8f9fa;
@@ -39,6 +52,48 @@
   <h1 class="text-center">Review for Quiz: <span th:text="${quiz.title}">Quiz Title</span></h1>
 
   <table class="table table-bordered table-hover">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+</head>
+<body>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
+>>>>>>> 8488b0d30f762d7f7c571fcaedd2ebb0f653d627
+>>>>>>> faaea3a1fe5ce7ea63e866e46165e80764a860cd
+<div class="container my-4">
+  <h1>Review for Quiz: <span th:text="${quiz.title}">Quiz Title</span></h1>
+
+  <table class="table table-striped">
+>>>>>>> cfa69bcfca4ef25d3694fb78d0aefdc3029f6820
+>>>>>>> 660102dfa1088bfa0bca7b774bd8e0b488a95ef2
+>>>>>>> ee0a2a13126d4e9c64349bfa09f2368b72c6b99f
+>>>>>>> 5a9eab0d1bd4fdbdf828c371c13bc1e15d30db60
+>>>>>>> d7e6079ccc39adb7891cf74591bce1feb827c2c4
     <thead>
     <tr>
       <th>#</th>
@@ -52,6 +107,19 @@
       <td th:text="${iterStat.index + 1}">1</td>
       <td th:text="${question.questionText}">Question Text</td>
       <td>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 660102dfa1088bfa0bca7b774bd8e0b488a95ef2
+>>>>>>> ee0a2a13126d4e9c64349bfa09f2368b72c6b99f
+>>>>>>> 5a9eab0d1bd4fdbdf828c371c13bc1e15d30db60
+>>>>>>> d7e6079ccc39adb7891cf74591bce1feb827c2c4
           <span th:each="answer : ${quizResult.userAnswers}"
                 th:if="${answer.question.id} == ${question.id}">
             <span th:if="${answer.userAnswer} == true" class="text-success">True</span>
@@ -61,18 +129,137 @@
       <td>
         <span th:if="${question.correctAnswer} == true" class="text-success">True</span>
         <span th:if="${question.correctAnswer} == false" class="text-danger">False</span>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+        <span th:if="${quizResult.answers != null and quizResult.answers[iterStat.index]} == true">True</span>
+        <span th:if="${quizResult.answers != null and quizResult.answers[iterStat.index]} == false">False</span>
+      </td>
+      <td>
+        <span th:if="${question.correctAnswer} == true">True</span>
+        <span th:if="${question.correctAnswer} == false">False</span>
+>>>>>>> cfa69bcfca4ef25d3694fb78d0aefdc3029f6820
+>>>>>>> 660102dfa1088bfa0bca7b774bd8e0b488a95ef2
+>>>>>>> ee0a2a13126d4e9c64349bfa09f2368b72c6b99f
+>>>>>>> 5a9eab0d1bd4fdbdf828c371c13bc1e15d30db60
+>>>>>>> d7e6079ccc39adb7891cf74591bce1feb827c2c4
       </td>
     </tr>
     </tbody>
   </table>
 
+<<<<<<< HEAD
   <div class="text-center">
     <a href="/user/dashboard" class="btn btn-primary">Back to Dashboard</a>
   </div>
+=======
+<<<<<<< HEAD
+  <div class="text-center">
+    <a href="/user/dashboard" class="btn btn-primary">Back to Dashboard</a>
+  </div>
+=======
+<<<<<<< HEAD
+  <div class="text-center">
+    <a href="/user/dashboard" class="btn btn-primary">Back to Dashboard</a>
+  </div>
+=======
+<<<<<<< HEAD
+  <div class="text-center">
+    <a href="/user/dashboard" class="btn btn-primary">Back to Dashboard</a>
+  </div>
+=======
+<<<<<<< HEAD
+  <div class="text-center">
+    <a href="/user/dashboard" class="btn btn-primary">Back to Dashboard</a>
+  </div>
+=======
+  <a href="/user/dashboard" class="btn btn-primary">Back to Dashboard</a>
+>>>>>>> cfa69bcfca4ef25d3694fb78d0aefdc3029f6820
+>>>>>>> 660102dfa1088bfa0bca7b774bd8e0b488a95ef2
+>>>>>>> ee0a2a13126d4e9c64349bfa09f2368b72c6b99f
+>>>>>>> 5a9eab0d1bd4fdbdf828c371c13bc1e15d30db60
+>>>>>>> d7e6079ccc39adb7891cf74591bce1feb827c2c4
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+<div class="container mt-5">
+  <h1 class="my-4">Quiz Review: <span th:text="${quiz.title}"></span></h1>
+
+  <div class="row">
+    <div class="col">
+      <h4>Your Score: <span th:text="${quizResult.score}"></span></h4>
+      <h5>Time Taken: <span th:text="${quizResult.timeTakenInSeconds}"></span> seconds</h5>
+    </div>
+  </div>
+
+  <div th:each="question, iterStat : ${quiz.questions}">
+    <div class="card my-3">
+      <div class="card-body">
+        <h5 class="card-title" th:text="${question.questionText}"></h5>
+
+        <!-- User's Answer -->
+        <p><strong>Your Answer: </strong>
+          <span th:if="${userAnswers[iterStat.index]}" th:text="'True'"></span>
+          <span th:if="${!userAnswers[iterStat.index]}" th:text="'False'"></span>
+        </p>
+
+        <!-- Correct Answer -->
+        <p><strong>Correct Answer: </strong>
+          <span th:if="${question.correctAnswer}" th:text="'True'"></span>
+          <span th:if="${!question.correctAnswer}" th:text="'False'"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <a href="/quiz/{quiz.id}/attempt" class="btn btn-primary">Go Back to Quiz</a>
+</div>
+
+>>>>>>> 9fca2ca58408eff5e64e42a1a32eeaff21d2114e
+>>>>>>> 380fcff587cd38b8fef92ed8534e4ac3ebd91633
+>>>>>>> 1dadf51c5a0d2d359d0ee10664b5adeb7991b4c2
+>>>>>>> 4bc7d928408fdf8b98ee62bf2e985e1eaefb6a7a
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
+>>>>>>> 8488b0d30f762d7f7c571fcaedd2ebb0f653d627
+>>>>>>> faaea3a1fe5ce7ea63e866e46165e80764a860cd
+>>>>>>> cfa69bcfca4ef25d3694fb78d0aefdc3029f6820
+>>>>>>> 660102dfa1088bfa0bca7b774bd8e0b488a95ef2
+>>>>>>> ee0a2a13126d4e9c64349bfa09f2368b72c6b99f
+>>>>>>> 5a9eab0d1bd4fdbdf828c371c13bc1e15d30db60
+>>>>>>> d7e6079ccc39adb7891cf74591bce1feb827c2c4
 </body>
 </html>
