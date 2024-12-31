@@ -7,21 +7,55 @@
 <body>
 <div class="container">
     <h1 class="my-4">Edit Quiz</h1>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
+
+    <!-- Form untuk update title -->
+>>>>>>> 8488b0d30f762d7f7c571fcaedd2ebb0f653d627
+>>>>>>> faaea3a1fe5ce7ea63e866e46165e80764a860cd
     <form th:action="@{/quiz/{quizId}/update-title(quizId=${quiz.id})}" method="post">
         <div class="form-group">
             <label for="title">Quiz Title</label>
             <input type="text" id="title" name="title" class="form-control" th:value="${quiz.title}" required>
         </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> faaea3a1fe5ce7ea63e866e46165e80764a860cd
         <button type="submit" class="btn btn-success mb-3">Update Title</button>
     </form>
 
     <h2 class="my-4">Questions</h2>
+<<<<<<< HEAD
+=======
+=======
+        <button type="submit" class="btn btn-success">Update Title</button>
+    </form>
+
+    <h2 class="my-4">Questions</h2>
+
+    <!-- Tabel daftar soal -->
+>>>>>>> 8488b0d30f762d7f7c571fcaedd2ebb0f653d627
+>>>>>>> faaea3a1fe5ce7ea63e866e46165e80764a860cd
     <table class="table">
         <thead>
         <tr>
             <th>#</th>
             <th>Question Text</th>
+<<<<<<< HEAD
             <th>Correct Answer</th>
+=======
+<<<<<<< HEAD
+            <th>Correct Answer</th>
+=======
+>>>>>>> 8488b0d30f762d7f7c571fcaedd2ebb0f653d627
+>>>>>>> faaea3a1fe5ce7ea63e866e46165e80764a860cd
             <th>Actions</th>
         </tr>
         </thead>
@@ -29,6 +63,10 @@
         <tr th:each="question : ${questions}">
             <td th:text="${question.id}"></td>
             <td th:text="${question.questionText}"></td>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> faaea3a1fe5ce7ea63e866e46165e80764a860cd
             <td th:text="${question.correctAnswer ? 'True' : 'False'}"></td> <!-- Menampilkan jawaban benar -->
             <td>
                 <a th:href="@{/quiz/{quizId}/edit-question/{questionId}(quizId=${quiz.id}, questionId=${question.id})}" class="btn btn-primary">Edit</a>
@@ -42,5 +80,67 @@
     <a th:href="@{/quiz/manage}" class="btn btn-secondary mt-3">Back to Manage Quizzes</a>
 </div>
 
+<<<<<<< HEAD
+=======
+=======
+            <td>
+                <a th:href="@{/quiz/{quizId}/edit-question/{questionId}(quizId=${quiz.id}, questionId=${question.id})}" class="btn btn-primary">Edit</a>
+                <form th:action="@{/quiz/{quizId}/question/{questionId}/delete(quizId=${quiz.id}, questionId=${question.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <a href="/quiz/manage" class="btn btn-secondary mt-3">Back to Manage Quizzes</a>
+
+
+<<<<<<< HEAD
+=======
+=======
+    <form th:action="@{/quiz/{quizId}/update(quizId=${quiz.id})}" th:object="${quiz}" method="post">
+        <div class="form-group">
+            <label for="title">Quiz Title</label>
+            <input type="text" id="title" name="title" class="form-control" th:field="*{title}" required>
+        </div>
+        <h2 class="my-4">Questions</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Question Text</th>
+                <th>Correct Answer</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="question : ${questions}">
+                <td th:text="${question.id}"></td>
+                <td>
+                    <input type="text" name="questionText[${question.id}]" class="form-control" th:value="${question.questionText}" required>
+                </td>
+                <td>
+                    <select name="correctAnswer[${question.id}]" class="form-control">
+                        <option value="true" th:selected="${question.correctAnswer}">True</option>
+                        <option value="false" th:selected="${!question.correctAnswer}">False</option>
+                    </select>
+                </td>
+                <td>
+                    <form th:action="@{/quiz/{quizId}/question/{questionId}/delete(quizId=${quiz.id}, questionId=${question.id})}" method="post">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    </form>
+>>>>>>> 23fd02c19f5a531ca4d9ee147db4da0adfb6da26
+>>>>>>> a530dfabf63526a2a25ec96db26055beb44f37b8
+</div>
+>>>>>>> 8488b0d30f762d7f7c571fcaedd2ebb0f653d627
+>>>>>>> faaea3a1fe5ce7ea63e866e46165e80764a860cd
 </body>
 </html>
