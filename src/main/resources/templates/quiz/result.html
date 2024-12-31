@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz Result</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="my-4">Your Quiz Result</h1>
+    <p>Your score: <strong th:text="${score}"></strong> / 100</p>
+    <p>Time taken: <strong th:text="${timeTakenInSeconds}"></strong> seconds</p>
+    <p th:if="${bonus > 0}">Bonus score: <strong th:text="${bonus}"></strong> points</p>
+
+    <div class="text-center mt-3">
+        <a href="/user/dashboard" class="btn btn-primary">Back to Dashboard</a>
+        <a th:href="@{/quiz/{quizId}/review/{userId}(quizId=${quizId}, userId=${userId})}" class="btn btn-info ml-3">Review Quiz</a> <!-- Review Quiz Button -->
+    </div>
+</div>
+</body>
+</html>
