@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4">Error</h1>
+    <div class="alert alert-danger" role="alert">
+        <p th:text="${error}"></p>
+    </div>
+    <a href="#" class="btn btn-primary" onclick="window.history.back();">Go Back</a>
+</div>
+</body>
+</html>

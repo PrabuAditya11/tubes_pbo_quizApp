@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Leaderboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Leaderboard for Quiz: <span th:text="${quiz.title}"></span></h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>User</th>
+            <th>Score</th>
+            <th>Time Taken (s)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="result, iterStat : ${leaderboard}">
+            <td th:text="${iterStat.count}"></td>
+            <td th:text="${result.user.name}"></td>
+            <td th:text="${result.score}"></td>
+            <td th:text="${result.timeTakenInSeconds}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/quiz/manage" class="btn btn-secondary mt-3">Back to Manage Quizzes</a>
+</div>
+</body>
+</html>

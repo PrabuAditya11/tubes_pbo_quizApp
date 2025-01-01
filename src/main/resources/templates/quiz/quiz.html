@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #timer {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .question-container {
+            display: none;
+        }
+        .question-container.active {
+            display: block;
+        }
+        #feedback-section {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        #feedback-timer {
+            color: red;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="my-4">Quiz: <span th:text="${quiz.title}"></span></h1>
+    <div id="timer" class="text-info">00:00</div>
+
+    <form id="quiz-form" th:action="@{/quiz/{id}/submit(id=${quiz.id})}" method="post">
+        <div id="question-section">
+            <div th:each="question, iterStat : ${quiz.questions}"
+                 class="question-container"
+                 th:classappend="${iterStat.index == 0} ? ' active' : ''"
+                 th:attr="data-duration=${question.duration}">
+                <div class="form-group">
+                    <label th:text="${question.questionText}"></label>
+                    <div>
+                        <label>
+                            <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'"
+                                   th:value="true" /> True
+                        </label>
+                        <label>
+                            <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'"
+                                   th:value="false" /> False
+                        </label>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary submit-answer-button">Submit Answer</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="feedback-section">
+            <p id="feedback-text"></p>
+            <p id="feedback-timer">10</p>
+            <button type="button" class="btn btn-primary" id="next-button">Next</button>
+            <button type="submit" class="btn btn-success mt-3" id="submit-button" style="display:none;">Submit Quiz</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    const questionContainers = document.querySelectorAll('.question-container');
+    const feedbackSection = document.getElementById('feedback-section');
+    const feedbackText = document.getElementById('feedback-text');
+    const feedbackTimerElement = document.getElementById('feedback-timer');
+    const nextButton = document.getElementById('next-button');
+    const submitButton = document.getElementById('submit-button');
+    const timerElement = document.getElementById('timer');
+    let currentQuestionIndex = 0;
+    let questionTimeLeft;
+    let feedbackTimeLeft = 10;
+    let timerInterval;
+    let feedbackTimer;
+
+    function updateTimer() {
+        const minutes = Math.floor(questionTimeLeft / 60);
+        const seconds = questionTimeLeft % 60;
+        timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+        if (questionTimeLeft > 0) {
+            questionTimeLeft--;
+        } else {
+            submitCurrentQuestion();
+        }
+    }
+
+    function startTimer() {
+        clearInterval(timerInterval);
+        questionTimeLeft = parseInt(questionContainers[currentQuestionIndex].getAttribute('data-duration'));
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function startFeedbackTimer(isLastQuestion) {
+        feedbackTimeLeft = 10;
+        feedbackTimerElement.textContent = feedbackTimeLeft;
+
+        feedbackTimer = setInterval(() => {
+            feedbackTimeLeft--;
+            feedbackTimerElement.textContent = feedbackTimeLeft;
+
+            if (feedbackTimeLeft <= 0) {
+                clearInterval(feedbackTimer);
+                if (isLastQuestion) {
+                    submitButton.click();
+                } else {
+                    moveToNextQuestion();
+                }
+            }
+        }, 1000);
+    }
+
+    function submitCurrentQuestion() {
+        clearInterval(timerInterval);
+        const selectedAnswer = document.querySelector(`input[name="answers[${currentQuestionIndex}]"]:checked`);
+        const userAnswer = selectedAnswer ? selectedAnswer.value === 'true' : false;
+
+        fetch('/quiz/submit-question', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `questionIndex=${currentQuestionIndex}&userAnswer=${userAnswer}&timeLeft=${questionTimeLeft}`
+        })
+            .then(response => response.json())
+            .then(data => {
+                showFeedback(data.isCorrect, data.correctAnswer, data.isLastQuestion);
+            });
+    }
+
+    function showFeedback(isCorrect, correctAnswer, isLastQuestion) {
+        feedbackText.textContent = isCorrect
+            ? 'Jawaban Anda Benar!'
+            : `Jawaban Anda Kurang Tepat. Jawaban yang benar adalah: ${correctAnswer}`;
+        feedbackSection.style.display = 'block';
+        questionContainers[currentQuestionIndex].style.display = 'none';
+
+        if (isLastQuestion) {
+            nextButton.style.display = 'none';
+            submitButton.style.display = 'block';
+        } else {
+            nextButton.style.display = 'block';
+        }
+
+        startFeedbackTimer(isLastQuestion);
+    }
+
+    function moveToNextQuestion() {
+        clearInterval(feedbackTimer);
+        feedbackSection.style.display = 'none';
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < questionContainers.length) {
+            questionContainers[currentQuestionIndex].classList.add('active');
+            startTimer();
+        }
+    }
+
+    // Event listeners
+    document.querySelectorAll('.submit-answer-button').forEach(button => {
+        button.addEventListener('click', submitCurrentQuestion);
+    });
+
+    nextButton.addEventListener('click', () => {
+        clearInterval(feedbackTimer);
+        moveToNextQuestion();
+    });
+
+    startTimer();
+</script>
+</body>
+</html>
