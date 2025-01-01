@@ -19,12 +19,17 @@
                 <option value="false" th:selected="${!question.correctAnswer}">False</option>
             </select>
         </div>
+<<<<<<< HEAD
         <div class="form-group">
             <label for="duration">Duration (seconds)</label>
             <input type="number" id="duration" name="duration" class="form-control" th:value="${question.duration}" required>
         </div>
         <button type="submit" class="btn btn-success">Save Changes</button>
         <a th:href="@{/quiz/manage}" class="btn btn-secondary">Cancel</a>
+=======
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a th:href="@{/quiz/{quizId}/edit(quizId=${quiz.id})}" class="btn btn-secondary">Cancel</a>
+>>>>>>> 7c7e8c136cff5c8198db3339276e0baed3698cb3
     </form>
 </div>
 </body>
