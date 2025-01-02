@@ -1,7 +1,17 @@
 package com.quiz.tubespbo.model;
 
 import jakarta.persistence.*;
+<<<<<<< HEAD
 import lombok.*;
+=======
+<<<<<<< HEAD
+import lombok.*;
+=======
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+>>>>>>> 7c7e8c136cff5c8198db3339276e0baed3698cb3
+>>>>>>> d3dd595c5a7877a2a01dec23dda5b6773c731114
 
 @Entity
 @Table(name = "user_answer")
@@ -28,6 +38,10 @@ public class UserAnswer {
     @Column(name = "user_answer")
     private Boolean userAnswer; // Nilai true/false untuk jawaban user
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d3dd595c5a7877a2a01dec23dda5b6773c731114
     // Waktu yang dihabiskan untuk menjawab soal
     @Column(name = "time_spent")
     private Long timeSpent; // Waktu dalam detik
@@ -93,4 +107,29 @@ public class UserAnswer {
         this.timeSpent = timeSpent;
         this.score = score;
     }
+<<<<<<< HEAD
 }
+=======
+
+    @Override
+    public String toString() {
+        return "UserAnswer{" +
+                "id=" + id +
+                ", quizResult=" + quizResult +
+                ", question=" + question +
+                ", userAnswer=" + userAnswer +
+                ", timeSpent=" + timeSpent +
+                ", score=" + score +
+                '}';
+    }
+}
+=======
+    // Constructor untuk kemudahan inisialisasi
+    public UserAnswer(QuizResult quizResult, Question question, Boolean userAnswer) {
+        this.quizResult = quizResult;
+        this.question = question;
+        this.userAnswer = userAnswer;
+    }
+}
+>>>>>>> 7c7e8c136cff5c8198db3339276e0baed3698cb3
+>>>>>>> d3dd595c5a7877a2a01dec23dda5b6773c731114

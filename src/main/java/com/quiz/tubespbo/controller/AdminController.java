@@ -15,10 +15,13 @@ public class AdminController {
     @Autowired
     private HttpSession httpSession;
 
+<<<<<<< HEAD
     /* -------------------------------------------------------------------------------------------------- */
     /*                                        ADMIN DASHBOARD                                             */
     /* -------------------------------------------------------------------------------------------------- */
 
+=======
+>>>>>>> d3dd595c5a7877a2a01dec23dda5b6773c731114
     @GetMapping("/dashboard_admin")
     public String adminDashboard(HttpSession session, Model model) {
         User currentUser = (User) session.getAttribute("currentUser");
@@ -28,5 +31,15 @@ public class AdminController {
         model.addAttribute("admin", currentUser);
         return "admin/dashboard_admin";
     }
+<<<<<<< HEAD
+=======
+
+    // Tambahkan fungsi logout khusus untuk admin
+    @GetMapping("/logout")
+    public String adminLogout(HttpSession session) {
+        session.invalidate(); // Hapus sesi saat admin logout
+        return "redirect:/auth/login";
+    }
+>>>>>>> d3dd595c5a7877a2a01dec23dda5b6773c731114
 }
 
