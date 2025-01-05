@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Quiz Review</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Review for <span th:text="${quizTitle}"></span></h1>
+  <h4 class="text-center mb-4">User: <span th:text="${userName}"></span></h4>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Question</th>
+      <th>Your Answer</th>
+      <th>Correct Answer</th>
+      <th>Score</th>
+      <th>Time Spent (seconds)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="userAnswer : ${userAnswers}">
+      <td th:text="${userAnswer.question.questionText}"></td>
+      <td th:text="${userAnswer.userAnswer ? 'True' : 'False'}"></td>
+      <td th:text="${userAnswer.question.correctAnswer ? 'True' : 'False'}"></td>
+      <td th:text="${userAnswer.score}"></td>
+      <td th:text="${userAnswer.timeSpent}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="text-center mt-4">
+    <a href="/user/dashboard" class="btn btn-primary">Back to Dashboard</a>
+  </div>
+</div>
+</body>
+</html>
